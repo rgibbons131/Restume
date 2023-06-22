@@ -1,0 +1,28 @@
+[
+    {
+        "templateId": "chrono1",
+        "templateName": "Chronological Resume",
+        "templateStructure": {
+            "fullName": "",
+            "email": "",
+            "objective": "",
+            "jobTitle": "",
+            "companyName": "",
+            "educationDegree": "",
+            "skills": ""
+        }
+    },
+    {
+        "templateId": "func1",
+        "templateName": "Functional Resume",
+        "templateStructure": {
+            "fullName": "",
+            "email": "",
+            "objective": "",
+            "skill1": "",
+            "skill2": "",
+            "educationDegree": "",
+            "experienceHighlight": ""
+        }
+    }
+]

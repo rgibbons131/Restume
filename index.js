@@ -8,6 +8,7 @@ const cors = require("cors");
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger.json");
 const { auth } = require("express-openid-connect");
+const resumeTempsRouter = require('./routes/resume_temps');
 
 const config = {
   authRequired: false,
@@ -31,7 +32,7 @@ app
     res.setHeader("Access-Control-Allow-Origin", "*");
     next();
   })
-  .use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument))
+  .use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 mongodb.initDb((err, mongodb) => {
   if (err) {
@@ -39,5 +40,8 @@ mongodb.initDb((err, mongodb) => {
   } else {
     app.listen(port);
     console.log(`Connected to DB and listening on ${port}`);
+
+    // Use routes after DB connection is established
+    app.use('/resume-templates', resumeTempsRouter);
   }
 });

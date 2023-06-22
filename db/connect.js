@@ -6,12 +6,12 @@ let _db;
 
 const initDb = (callback) => {
   if (_db) {
-    console.log("Db is already initialized!");
+    console.log("RESTUME DB initialized!");
     return callback(null, _db);
   }
   MongoClient.connect(process.env.URI)
     .then((client) => {
-      _db = client;
+      _db = client.db('restume'); // specify the name of your database here
       callback(null, _db);
     })
     .catch((err) => {
