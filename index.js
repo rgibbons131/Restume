@@ -14,7 +14,7 @@ const config = {
   authRequired: false,
   auth0Logout: true,
   secret: process.env.SECRET,
-  baseURL: "https://elements-richard.onrender.com",
+  baseURL: "restume.onrender.com",
   clientID: "DciNcQ4tiRf3MyaFzGCd94yuWOIv4BOu",
   issuerBaseURL: "https://dev-c05tuxzqaokwihrb.us.auth0.com",
 };
