@@ -3,10 +3,15 @@ const express = require("express");
 const router = express.Router();
 
 const feedbackController = require("../controllers/feedback");
+const { isLoggedIn } = require("../authorization/auth");
 
-router.get("/", feedbackController.getFeedback);
+router.get("/", isLoggedIn, feedbackController.getFeedback);
 router.post("/", feedbackController.addFeedback);
-router.delete("/:commentID", feedbackController.deleteFeedbackId);
-router.delete("/all/:resumeID", feedbackController.deleteFeedbackAll);
+router.delete("/:commentID", isLoggedIn, feedbackController.deleteFeedbackId);
+router.delete(
+  "/all/:resumeID",
+  isLoggedIn,
+  feedbackController.deleteFeedbackAll
+);
 
 module.exports = router;
