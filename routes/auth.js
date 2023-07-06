@@ -14,7 +14,7 @@ router.get('/auth/google',
 // What is the home page to successfully redirect to?
 router.get('/google/callback', 
     passport.authenticate('google', {
-        successRedirect: '/api-docs',
+        successRedirect: '/',
         failureRedirect: '/auth/failure'
     })
 );
@@ -24,10 +24,10 @@ router.get('/auth/failure', (req, res) => {
 })
 
 router.get('/logout', (req, res) => {
-    req.logout(function(err) {
-        if (err) { return next(err); }
-        res.redirect('/login');
-    });
+    // req.logout(function(err) {
+    //     if (err) { return next(err); }
+    //     res.redirect('/login');
+    // });
 
     req.session.destroy()
     res.send('Goodbye')

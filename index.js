@@ -16,15 +16,6 @@ const resumeTempsRouter = require('./routes/resume_temps');
 
 const passport = require('passport');
 
-const config = {
-  authRequired: false,
-  auth0Logout: true,
-  secret: process.env.SECRET,
-  baseURL: "https://elements-richard.onrender.com",
-  clientID: "DciNcQ4tiRf3MyaFzGCd94yuWOIv4BOu",
-  issuerBaseURL: "https://dev-c05tuxzqaokwihrb.us.auth0.com",
-};
-
 dotenv.config();
 const app = express();
 const port = process.env.PORT || 8080;
@@ -37,14 +28,11 @@ app.use(passport.session());
 app
   .use(bodyParser.json())
   .use(cors())
-  .use(auth(config))
   .use('/', require('./routes'))
-  // .use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument))
   .use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     next();
   })
-  // .use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 
 mongodb.initDb((err, mongodb) => {
@@ -53,8 +41,5 @@ mongodb.initDb((err, mongodb) => {
   } else {
     app.listen(port);
     console.log(`Connected to DB and listening on ${port}`);
-
-    // Use routes after DB connection is established
-    // app.use('/resume-templates', resumeTempsRouter);
   }
 });
