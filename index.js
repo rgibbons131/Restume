@@ -9,6 +9,7 @@ const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger.json");
 const { auth } = require("express-openid-connect");
 const resumeTempsRouter = require('./routes/resume_temps');
+const feedbackRouter = require('./routes/feedback');
 
 // const config = {
 //   authRequired: false,
@@ -43,5 +44,6 @@ mongodb.initDb((err, mongodb) => {
 
     // Use routes after DB connection is established
     app.use('/resume-templates', resumeTempsRouter);
+    app.use('/feedback', feedbackRouter);
   }
 });

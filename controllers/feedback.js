@@ -19,7 +19,7 @@ exports.addFeedback = async (req, res) => {
       const database = db.getDb(); // get the db connection when a request is made
       const feedbackDB = await database.collection("feedback");
       feedbackDB.insertOne(feedback);
-      res.status(200);
+      res.status(200).send();
     } else {
       res.status(400).json({ error: "Invalid request" });
     }
@@ -37,7 +37,7 @@ exports.getFeedback = async (req, res) => {
       const database = db.getDb();
       const feedback = await database
         .collection("feedback")
-        .find({ resumeId: req.params.resumeID })
+        .find({ _id: req.params.resumeID })
         .toArray();
       res.status(200).json(feedback);
     } catch (err) {
@@ -57,7 +57,7 @@ exports.deleteFeedbackId = async (req, res) => {
       const feedback = await database
         .collection("feedback")
         .deleteOne({ _id: req.params.commentID });
-      res.status(200);
+      res.status(200).send();
     } catch (err) {
       console.error(err);
       res
@@ -75,7 +75,7 @@ exports.deleteFeedbackAll = async (req, res) => {
       const feedback = await database
         .collection("feedback")
         .deleteMany({ resumeID: req.params.resumeID });
-      res.status(200);
+      res.status(200).send();
     } catch (err) {
       console.error(err);
       res
