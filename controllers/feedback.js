@@ -3,20 +3,19 @@ const db = require("../db/connect");
 
 exports.addFeedback = async (req, res) => {
   try {
-    if (
-      req.body.comment != null &&
-      req.body.resumeID != null &&
-      req.body.userID != null
-    ) {
+    if (req.body.comment != null && req.body.resumeID != null) {
       const feedback = {
         comment: req.body.comment,
         resumeID: req.body.resumeID,
-        userID: req.body.userID,
       };
       if (req.body.name != null) {
         feedback.name = req.body.name;
       }
       const database = db.getDb(); // get the db connection when a request is made
+      const resume = await database
+        .collection("resumes")
+        .find({ _id: req.body.resumeID });
+      feedback.userID = resume._id;
       const feedbackDB = await database.collection("feedback");
       feedbackDB.insertOne(feedback);
       res.status(200).send();
