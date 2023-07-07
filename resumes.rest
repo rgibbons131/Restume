@@ -1,0 +1,17 @@
+POST http://localhost:8080/resumes
+Content-Type: application/json
+Authorization: Bearer 105710009135823208206
+
+{
+  "templateId": "chrono1",
+  "templateStructure": {
+    "fullName": "John Doe",
+    "email": "johndoe@example.com",
+    "objective": "Seeking a challenging position",
+    "jobTitle": "Software Engineer",
+    "companyName": "ABC Inc.",
+    "educationDegree": "Bachelor's Degree",
+    "skills": "JavaScript, Node.js, React"
+  },
+  "resumeInfo": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis commodo auctor turpis, vitae eleifend nunc. Ut at dui nunc."
+}

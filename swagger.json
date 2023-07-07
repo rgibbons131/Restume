@@ -62,7 +62,11 @@
       "get": {
         "description": "",
         "parameters": [],
-        "responses": {}
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
       }
     },
     "/resume-templates": {
@@ -82,19 +86,7 @@
         }
       }
     },
-    "/feedback/": {
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
+    "/resumes": {
       "post": {
         "description": "",
         "parameters": [
@@ -104,16 +96,13 @@
             "schema": {
               "type": "object",
               "properties": {
-                "comment": {
+                "templateId": {
                   "example": "any"
                 },
-                "resumeID": {
+                "templateStructure": {
                   "example": "any"
                 },
-                "userID": {
-                  "example": "any"
-                },
-                "name": {
+                "resumeInfo": {
                   "example": "any"
                 }
               }
@@ -121,53 +110,14 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "201": {
+            "description": "Created"
           },
           "400": {
             "description": "Bad Request"
           },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/feedback/{commentID}": {
-      "delete": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "commentID",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/feedback/all/{resumeID}": {
-      "delete": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "resumeID",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
+          "401": {
+            "description": "Unauthorized"
           },
           "500": {
             "description": "Internal Server Error"

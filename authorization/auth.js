@@ -16,7 +16,8 @@ passport.use(new GoogleStrategy({
 
     // This is where you'd add a user to the DB
   function(request, accessToken, refreshToken, profile, done) {
-    return done(null, profile); 
+    console.log(profile.id); // Print user.id to the console
+    return done(null, profile);
 }
 ));
 

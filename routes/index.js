@@ -11,4 +11,7 @@ router.use('/', isLoggedIn, require('./swagger'));
 // Route for resume routes
 router.use('/', isLoggedIn, require('./resume_temps'))
 
+// Route for resumes
+router.use('/', isLoggedIn, require('./resumes'));
+
 module.exports = router;
