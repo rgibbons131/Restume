@@ -5,6 +5,7 @@ const userController = require("../controllers/users");
 const { isLoggedIn } = require("../authorization/auth");
 
 // Add user
+router.post('/', userController.addUser)
 
 // Get all users
 router.get("/", userController.getUsers);
