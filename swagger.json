@@ -5,7 +5,7 @@
     "description": "Description",
     "version": "1.0.0"
   },
-  "host": "localhost:8080",
+  "host": "restume.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
@@ -58,17 +58,6 @@
         }
       }
     },
-    "/api-dcos": {
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {
-          "401": {
-            "description": "Unauthorized"
-          }
-        }
-      }
-    },
     "/resume-templates": {
       "get": {
         "description": "",
@@ -86,7 +75,31 @@
         }
       }
     },
-    "/resumes": {
+    "/feedback/{resumeID}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "resumeID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/feedback": {
       "post": {
         "description": "",
         "parameters": [
@@ -102,7 +115,7 @@
                 "templateStructure": {
                   "example": "any"
                 },
-                "resumeInfo": {
+                "name": {
                   "example": "any"
                 }
               }
@@ -115,6 +128,54 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/feedback/{commentID}": {
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "commentID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/feedback/all/{resumeID}": {
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "resumeID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
           },
           "401": {
             "description": "Unauthorized"
