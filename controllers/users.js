@@ -21,7 +21,7 @@ const getSingleUser = async(req, res, next) => {
         const result = await db
         .getDb()
         .collection('users')
-        .findOne({ _id: new ObjectId(res.params.id)});
+        .findOne({_id: new ObjectId(req.params.id)});
 
         res.send(result).status(200);
         if (!result) {
