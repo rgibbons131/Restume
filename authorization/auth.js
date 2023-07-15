@@ -12,8 +12,8 @@ passport.use(new GoogleStrategy({
     clientSecret: GOOGLE_CLIENT_SECRET,
 
     // For local testing
-    callbackURL: "http://localhost:8080/google/callback",
-    // callbackURL: "https://restume.onrender.com/google/callback",
+    // callbackURL: "http://localhost:8080/google/callback",
+    callbackURL: "https://restume.onrender.com/google/callback",
     passReqToCallback   : true
 },
 

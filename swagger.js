@@ -6,9 +6,9 @@ const doc = {
     description: "Description",
   },
 
-  // host: "restume.onrender.com",
-  host: "localhost:8080",
-  schemes: ["http"], 
+  host: "restume.onrender.com",
+  // host: "localhost:8080",
+  schemes: ["https"] 
 };
 
 const outputFile = "./swagger.json";
