@@ -1,5 +1,6 @@
 // controllers/feedback.js
 const db = require("../db/connect");
+const ObjectId = require("mongodb").ObjectId;
 
 exports.addFeedback = async (req, res) => {
   try {
@@ -14,7 +15,7 @@ exports.addFeedback = async (req, res) => {
       const database = db.getDb(); // get the db connection when a request is made
       const resume = await database
         .collection("resumes")
-        .find({ _id: req.body.resumeID });
+        .findOne({ _id: new ObjectId(req.body.resumeID) });
       feedback.userID = resume._id;
       const feedbackDB = await database.collection("feedback");
       feedbackDB.insertOne(feedback);
@@ -26,7 +27,7 @@ exports.addFeedback = async (req, res) => {
     console.error(err); // This will log the actual error to your console.
     res
       .status(500)
-      .json({ error: "An error occurred while fetching the resume templates" });
+      .json({ error: "An error occurred while creating feedback" });
   }
 };
 
@@ -45,8 +46,9 @@ exports.getFeedback = async (req, res) => {
         .status(500)
         .json({ error: "An error occurred while fetching the feedback" });
     }
+  } else {
+    res.status(500).json({ error: "You must send a valid resume ID" });
   }
-  res.status(500).json({ error: "You must send a valid resume ID" });
 };
 
 exports.deleteFeedbackId = async (req, res) => {
@@ -55,7 +57,7 @@ exports.deleteFeedbackId = async (req, res) => {
       const database = db.getDb();
       const feedback = await database
         .collection("feedback")
-        .deleteOne({ _id: req.params.commentID });
+        .deleteOne({ _id: new ObjectId(req.params.commentID) });
       res.status(200).send();
     } catch (err) {
       console.error(err);
@@ -63,8 +65,9 @@ exports.deleteFeedbackId = async (req, res) => {
         .status(500)
         .json({ error: "An error occurred while accessing the feedback" });
     }
+  } else {
+    res.status(500).json({ error: "You must send a valid feedback ID" });
   }
-  res.status(500).json({ error: "You must send a valid feedback ID" });
 };
 
 exports.deleteFeedbackAll = async (req, res) => {
@@ -81,6 +84,7 @@ exports.deleteFeedbackAll = async (req, res) => {
         .status(500)
         .json({ error: "An error occurred while accessing the feedback" });
     }
+  } else {
+    res.status(500).json({ error: "You must send a valid user ID" });
   }
-  res.status(500).json({ error: "You must send a valid user ID" });
 };

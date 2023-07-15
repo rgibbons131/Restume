@@ -1,4 +1,6 @@
 const db = require('../db/connect');
+const { body } = require('express-validator');
+
 
 const templates = [
     {

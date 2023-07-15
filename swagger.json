@@ -5,7 +5,7 @@
     "description": "Description",
     "version": "1.0.0"
   },
-  "host": "localhost:8080",
+  "host": "restume.onrender.com",
   "basePath": "/",
   "schemes": [
     "http"
@@ -58,17 +58,6 @@
         }
       }
     },
-    "/api-dcos": {
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {
-          "401": {
-            "description": "Unauthorized"
-          }
-        }
-      }
-    },
     "/resume-templates": {
       "get": {
         "description": "",
@@ -86,7 +75,31 @@
         }
       }
     },
-    "/resumes": {
+    "/feedback/{resumeID}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "resumeID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/feedback": {
       "post": {
         "description": "",
         "parameters": [
@@ -102,7 +115,7 @@
                 "templateStructure": {
                   "example": "any"
                 },
-                "resumeInfo": {
+                "name": {
                   "example": "any"
                 }
               }
@@ -125,164 +138,13 @@
         }
       }
     },
-    "/resumes/{id}": {
-      "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "put": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "templateId": {
-                  "example": "any"
-                },
-                "templateStructure": {
-                  "example": "any"
-                },
-                "resumeInfo": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
+
+    "/feedback/{commentID}": {
       "delete": {
         "description": "",
         "parameters": [
           {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/feedback": {
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "post": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "comment": {
-                  "example": "any"
-                },
-                "resumeID": {
-                  "example": "any"
-                },
-                "name": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/{feedbackcommentID}": {
-      "delete": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "feedbackcommentID",
+            "name": "commentID",
             "in": "path",
             "required": true,
             "type": "string"
@@ -326,52 +188,6 @@
       }
     },
     "/users/": {
-<<<<<<< HEAD
-=======
-      "post": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "school": {
-                  "example": "any"
-                },
-                "numberOfResumes": {
-                  "example": "any"
-                },
-                "connectionString": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "201": {
-            "description": "Created"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
->>>>>>> 0963f9b299d41a5d6e2e26d8aefbc4fa896e9385
       "get": {
         "description": "",
         "parameters": [],
@@ -405,8 +221,6 @@
           },
           "401": {
             "description": "Unauthorized"
-<<<<<<< HEAD
-=======
           }
         }
       },
@@ -429,7 +243,6 @@
           },
           "500": {
             "description": "Internal Server Error"
->>>>>>> 0963f9b299d41a5d6e2e26d8aefbc4fa896e9385
           }
         }
       }

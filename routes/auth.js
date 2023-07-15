@@ -14,7 +14,7 @@ router.get('/auth/google',
 // What is the home page to successfully redirect to?
 router.get('/google/callback', 
     passport.authenticate('google', {
-        successRedirect: '/',
+        successRedirect: '/api-docs',
         failureRedirect: '/auth/failure'
     })
 );
