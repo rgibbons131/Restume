@@ -109,10 +109,10 @@
             "schema": {
               "type": "object",
               "properties": {
-                "comment": {
+                "templateId": {
                   "example": "any"
                 },
-                "resumeID": {
+                "templateStructure": {
                   "example": "any"
                 },
                 "name": {
@@ -123,8 +123,8 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "201": {
+            "description": "Created"
           },
           "400": {
             "description": "Bad Request"
