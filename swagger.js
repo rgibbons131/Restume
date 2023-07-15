@@ -8,7 +8,11 @@ const doc = {
 
   // host: "restume.onrender.com",
   host: "localhost:8080",
+<<<<<<< HEAD
   schemes: ["http"],
+=======
+  schemes: ["http"], 
+>>>>>>> 0963f9b299d41a5d6e2e26d8aefbc4fa896e9385
 };
 
 const outputFile = "./swagger.json";
