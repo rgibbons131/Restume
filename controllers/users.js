@@ -1,3 +1,4 @@
+const { MongoDBNamespace } = require("mongodb");
 const db = require("../db/connect");
 const ObjectId = require('mongodb').ObjectId;
 
@@ -32,7 +33,25 @@ const getSingleUser = async(req, res, next) => {
     }
 }
 
+const deleteUser = async(req, res, next) => {
+    try {
+        const response = await db
+        .getDb()
+        .collection('users')
+        .deleteOne({_id: new ObjectId(req.params.id)});
+        res.send(result).status(200);
+        if (!result) {
+            res.send("There was no result.")
+        } else {
+            res.send("User Deleted");
+        }
+} catch {
+    res.sendStatus(500)
+}
+}
+
 module.exports = {
     getUsers,
-    getSingleUser
+    getSingleUser,
+    deleteUser
 };

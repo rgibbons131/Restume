@@ -8,7 +8,7 @@
   "host": "localhost:8080",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
     "/login": {
@@ -319,7 +319,7 @@
         }
       }
     },
-    "/users": {
+    "/users/": {
       "get": {
         "description": "",
         "parameters": [],
@@ -336,8 +336,27 @@
         }
       }
     },
-    "/{id}": {
+    "/users/{id}": {
       "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "delete": {
         "description": "",
         "parameters": [
           {
