@@ -7,7 +7,7 @@ const doc = {
   },
 
   // host: "restume.onrender.com",
-  host: "localhost:8080",
+  host: "restume.onrender.com",
   schemes: ["https"],
 };
 

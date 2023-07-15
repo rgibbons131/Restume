@@ -5,10 +5,10 @@ const router = express.Router();
 const feedbackController = require("../controllers/feedback");
 const { isLoggedIn } = require("../authorization/auth");
 
-router.get("/feedback", isLoggedIn, feedbackController.getFeedback);
+router.get("/feedback/:resumeID", isLoggedIn, feedbackController.getFeedback);
 router.post("/feedback", feedbackController.addFeedback);
 router.delete(
-  "/feedback:commentID",
+  "/feedback/:commentID",
   isLoggedIn,
   feedbackController.deleteFeedbackId
 );
