@@ -1,7 +1,5 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth2');
-
-const login = require('../controllers/login');
 const { access } = require('fs');
 
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
