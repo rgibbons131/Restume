@@ -2,8 +2,6 @@ const express = require('express');
 const router = express.Router();
 const resumesController = require('../controllers/resumes');
 
-// Route for getting all resumes
-router.get('/resumes', resumesController.getResumes);
 
 // Route for creating a new resume
 router.post('/resumes', resumesController.createResume);
