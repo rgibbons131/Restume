@@ -1,4 +1,5 @@
 const db = require("../db/connect");
+const ObjectId = require('mongodb').ObjectId;
 
 const getUsers = async(req, res) => {
     try {
@@ -20,13 +21,14 @@ const getSingleUser = async(req, res, next) => {
         const result = await db
         .getDb()
         .collection('users')
-        .findOne({_id: new ObjectId(req.params.id)});
+        .findOne({ _id: new ObjectId(res.params.id)});
 
-        result.toArray().then((lists) => {
-            res.status(200).json(lists);
-        })
+        res.send(result).status(200);
+        if (!result) {
+            console("There was no result.")
+        }
     } catch {
-        res.sendStatus(500);
+        res.send('didnt work.')
     }
 }
 
