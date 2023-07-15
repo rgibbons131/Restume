@@ -17,5 +17,8 @@ router.use('/', isLoggedIn, require('./resumes'));
 // Route for feedback routes
 router.use("/", require("./feedback"));
 
+// Route for user routes
+router.use("/users", require("./users"));
+
 module.exports = router;
 

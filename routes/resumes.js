@@ -4,8 +4,6 @@ const resumesController = require('../controllers/resumes');
 const { body, param, validationResult } = require('express-validator');
 
 
-// Route for getting all resumes
-router.get('/resumes', resumesController.getResumes);
 
 router.post(
     '/resumes',
